@@ -11,7 +11,10 @@
     "docs:dev": "vuepress dev docs  "
   },
   "devDependencies": {
-    "@vuepress/plugin-search": "next",
+    "@vuepress/cli": "next",
+    "@vuepress/client": "next",
+    "vue": "3.2.37",
+    "vuepress2-plugin-full-text-search": "latest",
     "vuepress": "next",
     "vuepress-theme-hope": "next"
   }

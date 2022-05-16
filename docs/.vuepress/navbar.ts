@@ -8,9 +8,13 @@ export const zhNavbar = navbar([
     link: "/git/README.md",
   },
   {
-    text: "github技巧",
+    text: "github配置",
     icon: "config",
     link: "/github/README.md",
+  }, {
+    text: "github技巧",
+    icon: "config",
+    link: "/tips/README.md",
   },
 ]);
 export const enNavbar = navbar([
@@ -20,7 +24,7 @@ export const enNavbar = navbar([
     link: "/en/git/README.md",
   },
   {
-    text: "github tips",
+    text: "github config",
     icon: "config",
     link: "/en/github/README.md",
   },

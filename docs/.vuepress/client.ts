@@ -1,5 +1,5 @@
-import { defineClientAppEnhance } from "@vuepress/client";
-import NpmBadge from "./components/NpmBadege.vue";
+import { defineClientConfig } from "@vuepress/client";
+
 import hope from "vuepress-theme-hope/package.json";
 import vuePkg from "vue/package.json";
 
@@ -20,6 +20,6 @@ function showBadge(name, version, nameStyle, versionStyle) {
 showBadge("vue", vuePkg.version, "#606060", "RGB(20,117,178)");
 showBadge("vuepress", vp.version, "#606060", "RGB(20,117,178)");
 showBadge("vuepress-theme-hope", hope.version, "#606060", "RGB(20,117,178)");
-export default defineClientAppEnhance(({ app, router, siteData }) => {
-  app.component("NpmBadge");
+export default defineClientConfig({
+  enhance({ app, router, siteData }) {},
 });

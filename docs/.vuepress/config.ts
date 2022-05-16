@@ -1,12 +1,11 @@
 import { defineUserConfig } from "vuepress";
 
-import theme  from "./themeConfig";
-import {searchPlugin} from "@vuepress/plugin-search";
+import theme from "./themeConfig";
+import SearchPlugin from "vuepress2-plugin-full-text-search";
 export default defineUserConfig({
   base: "/git-tutor/",
   dest: "./dist",
   locales: {
-
     "/": {
       lang: "zh-CN",
       title: "git教程",
@@ -41,15 +40,7 @@ export default defineUserConfig({
   title: "git-tutor",
   description: "A simple git tutorial",
 
-  theme ,
+  theme,
 
-  plugins: [
-    searchPlugin({
-      locales: {
-        "/": {
-          placeholder: "搜索文档",
-        },
-      },
-    })
-  ],
+  plugins: [SearchPlugin],
 });
