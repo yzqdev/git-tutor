@@ -1,0 +1,21 @@
+{
+  "name": "git-tutor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yzqdev/git-tutor.git",
+  "author": "yzqdev <yzqdev@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
+    "docs:dev": "vuepress dev docs  "
+  },
+  "devDependencies": {
+    "@vuepress/cli": "2.0.0-beta.49",
+    "@vuepress/client": "2.0.0-beta.49",
+    "vue": "3.2.37",
+    "vuepress2-plugin-full-text-search": "latest",
+    "vuepress": "2.0.0-beta.49",
+    "vuepress-theme-hope": "2.0.0-beta.91"
+  }
+}
