@@ -1,7 +1,6 @@
 import { defineUserConfig } from "vuepress";
 
 import theme from "./themeConfig";
-import SearchPlugin from "vuepress2-plugin-full-text-search";
 export default defineUserConfig({
   base: "/git-tutor/",
   dest: "./dist",
@@ -41,6 +40,5 @@ export default defineUserConfig({
   description: "A simple git tutorial",
 
   theme,
-
-  plugins: [SearchPlugin],
+ 
 });
