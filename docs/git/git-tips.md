@@ -52,3 +52,42 @@ git reset -–hard：彻底回退到某个版本，本地的源码也会变为�
 通过git reflog命令查看到之后，我们再利用 git reset 来返回到相应的版本即可，HEAD前面的一串字符为我们简写的ID，所以最后输入
 
 `git reset --hard ca936c3`即回滚到了最新的版本号了
+
+## amend操作
+
+:::warn
+但是不能是已经 push 的提交
+:::
+修改文件后
+
+git add file
+
+用法
+
+git commit --amend
+
+合并缓存的修改和上一次的提交，用新的快照替换上一个提交。缓存区没有文件时运行这个命令可以用来编辑上次提交的提交信息，而不会更改快照。
+
+修改提交信息
+
+```shell
+git commit --amend -m 'amend message'
+```
+
+//修改提交信息操作 force
+
+```shell
+git push --force-with-lease origin main
+```
+
+### 如果只是添加了一些文件,不想改commit
+
+适用场景：上一次提交遗漏了一些文件，需要补交，但不想多一次commit
+
+```shell
+git commit -m 'initial commit'
+git add forgotten_file
+git commit --amend --no-edit
+```
+
+该操作会修改上一次提交的内容，但不会要求你编辑提交信息，仍保持上一次commit的message
