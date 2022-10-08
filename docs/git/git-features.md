@@ -2,7 +2,7 @@
 
 **git submodule如何使用?**
 
-```java
+```powershell
 在clone的时候
 git clone --recursive https://github.com/halo-dev/halo
 
@@ -13,6 +13,13 @@ git init
 git submodule add （+地址）------
 第三步拉取所有的
 git submodule update --init --recursive    下拉子模块
+```
+
+## 相关操作
+
+```shell
+# 更新子模块
+git submodule update
 ```
 
 **如果实在是不小心上传了.idea文件**
