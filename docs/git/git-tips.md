@@ -91,3 +91,28 @@ git commit --amend --no-edit
 ```
 
 该操作会修改上一次提交的内容，但不会要求你编辑提交信息，仍保持上一次commit的message
+
+## 给文件夹添加git remote
+
+会出现错误`The following untracked working tree files would be overwritten by merge`
+
+The problem is that you are not tracking the files locally but identical files are tracked remotely so in order to "pull" your system would be forced to overwrite the local files which are not version controlled.
+
+Try running
+
+```shell
+git add *
+git stash
+git pull
+```
+
+This will track all files, remove all of your local changes to those files, and then get the files from the server.
+或者
+
+```shell
+git fetch
+ # 删除所有untrack的文件
+git clean  -d  -fx .
+git reset --hard origin/main
+
+```
