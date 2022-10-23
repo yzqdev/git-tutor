@@ -1,12 +1,59 @@
 # git-tips
 
+## 清空所有commit
+
+### 一些小技巧
+
+```shell
+# 获取当前origin对应的url 
+git ls-remote --get-url origin
+# git获取当前分支名字
+git rev-parse --abbrev-ref HEAD
+```
+
+### 删除所有commit
+
+```powershell
+function clearAllCommits {
+    $remote = git ls-remote --get-url origin
+    Write-Host -ForegroundColor Cyan "获取git remote地址=>$remote"
+     
+    Write-Host -ForegroundColor Red "删除.git文件夹"
+    Remove-Item -Recurse -Force ./.git 
+    Write-Host -ForegroundColor Green "删除完毕,git操作"
+    git init
+    git remote add origin "$remote" 
+    git add -A
+    git commit -m "init" 
+    git push origin main -f
+
+}
+```
+
+也可以用
+
+```shell
+ git checkout --orphan dev ;
+    git add -A ;
+    git branch -D main ;
+    git branch -m main ;
+    git commit -m 'Initial commit' ;
+    git push origin main -f ;
+    git gc --aggressive --prune=all
+```
+
+:::tip
+`git checkout --orphan tmp`不会删除文件
+`git switch --orphan tmp`会删除所有跟踪的的文件,所有不能用来清空commit
+:::
+
 ## git push force如何pull
 
 ```powershell
 git fetch origin
 git checkout -b tmp
 git branch -D main
-git checout -b main origin/main
+git checkout -b main origin/main
 git branch -D tmp
 ```
 
@@ -107,7 +154,8 @@ git pull
 ```
 
 This will track all files, remove all of your local changes to those files, and then get the files from the server.
-或者
+或者  
+**推荐**
 
 ```shell
 git fetch
@@ -115,4 +163,15 @@ git fetch
 git clean  -d  -fx .
 git reset --hard origin/main
 
+```
+
+## 常用操作
+
+```shell
+git checkout -b dev#作用是如果没有dev分支，创建dev分支并切换至该分支
+git show HEAD^#显示当前改动的文件
+git tag #打标签
+git push --tag 
+git tag -D "v1.0.0"
+git stash #暂存
 ```
