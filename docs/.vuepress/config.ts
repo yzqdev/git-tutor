@@ -1,5 +1,5 @@
 import { defineUserConfig } from 'vuepress'
-
+import { searchProPlugin } from 'vuepress-plugin-search-pro'
 import theme from './themeConfig'
 export default defineUserConfig({
   base: '/git-tutor/',
@@ -40,4 +40,9 @@ export default defineUserConfig({
   description: 'A simple git tutorial',
 
   theme,
+  plugins: [
+    searchProPlugin({
+      indexContent: true,
+    }),
+  ],
 })
