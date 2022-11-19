@@ -13,6 +13,8 @@ git rev-parse --abbrev-ref HEAD
 
 ### 删除所有commit
 
+#### 直接删除.git文件夹
+
 ```powershell
 function clearAllCommits {
     $remote = git ls-remote --get-url origin
@@ -30,6 +32,18 @@ function clearAllCommits {
 }
 ```
 
+#### 使用`git reset --soft <first commit id>`
+
+```powershell
+
+    $firstCommitId= git rev-list --max-parents=0 HEAD
+       Write-Host -ForegroundColor Green "第一次commit的id=>$firstCommitId"
+    git reset --soft $firstCommitId
+    git add -A
+    git commit -m "add files" 
+    git push origin main -f
+```
+
 也可以用
 
 ```shell
@@ -45,6 +59,8 @@ function clearAllCommits {
 :::tip
 `git checkout --orphan tmp`不会删除文件
 `git switch --orphan tmp`会删除所有跟踪的的文件,所有不能用来清空commit
+`git rev-list --max-parents=0 HEAD`可以获取第一个commit的id
+然后`git reset --soft <commitid>`就行了
 :::
 
 ## git push force如何pull
@@ -78,7 +94,7 @@ git config --global --add --bool push.autoSetupRemote true
 
 5.git reset --mixed:为默认方式，不带任何参数的git reset，即时这种方式，它回退到某个版本，只保留源码，回退commit和index信息。
 
-6.git reset --hard:彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的commit中所包含的更改被冲掉。
+6.git reset --hard:彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的commit中所包含的更改被冲掉,未提交的文件也会消失。
 :::
 
 ### 1.回滚到指定版本
@@ -175,3 +191,32 @@ git push --tag
 git tag -D "v1.0.0"
 git stash #暂存
 ```
+
+## git add和git stash的区别
+
+git add是针对新建文件  
+git stash是针对被修改文件  
+执行add命令时，可自动将文件提交到暂存区  
+执行stash命令时，若该文件是新建文件却没有add，则stash无效，若该文件不是新建文件，则stash可自动将文件提交到暂存区
+
+相关命令
+
+```shell
+git stash #保存工作现场
+
+git stash list #查看保存到工作现场
+
+git stash apply #恢复工作现场，现场还在list中没删
+
+git stash pop #恢复并删除现场
+
+git stash drop #删除现场
+
+git stash clear #删除所有现场
+```
+
+## 关于git restore
+
+`git restore`指令使得在工作空间但是不在暂存区的文件撤销更改(内容恢复到没修改之前的状态)
+
+而`git restore --staged`的作用是将暂存区的文件从暂存区撤出，但不会更改文件的内容
