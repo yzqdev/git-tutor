@@ -6,7 +6,7 @@
   "author": "yzqdev <yzqdev@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "docs:build": "vuepress build docs",
+    "docs:build": "vuepress-webpack build docs",
     "docs:clean-dev": "vuepress dev docs --clean-cache",
     "docs:dev": "vuepress dev docs  "
   },
@@ -14,6 +14,8 @@
     "@vuepress/cli": "2.0.0-beta.53",
     "@vuepress/client": "2.0.0-beta.53",
     "vue": "3.2.45",
+    "sass-loader": "13.2.0",
+    "vuepress-webpack": "2.0.0-beta.53",
     "vuepress-plugin-search-pro": "2.0.0-beta.124",
     "vuepress": "2.0.0-beta.53",
     "vuepress-theme-hope": "2.0.0-beta.124"
