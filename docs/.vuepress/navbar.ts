@@ -18,15 +18,4 @@ export const zhNavbar = navbar([
     link: '/tips/README.md',
   },
 ])
-export const enNavbar = navbar([
-  {
-    text: 'git tutorial',
-    icon: 'creative',
-    link: '/en/git/README.md',
-  },
-  {
-    text: 'github config',
-    icon: 'config',
-    link: '/en/github/README.md',
-  },
-])
+ 

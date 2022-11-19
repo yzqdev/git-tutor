@@ -1,5 +1,5 @@
-import { enNavbar, zhNavbar } from './navbar'
-import { enSidebar, zhSidebar } from './sidebar'
+import {   zhNavbar } from './navbar'
+import {   zhSidebar } from './sidebar'
 import { hopeTheme } from 'vuepress-theme-hope'
 export default hopeTheme({
   logo: '/images/git.png',
