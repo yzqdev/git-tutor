@@ -20,4 +20,10 @@ export default hopeTheme({
       displayFooter: true,
     },
   },
+  plugins:{
+    prismjs:{
+      dark:'tomorrow',
+      light:"tomorrow"
+    }
+  }
 })
