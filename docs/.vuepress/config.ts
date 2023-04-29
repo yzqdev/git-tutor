@@ -1,5 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { searchProPlugin } from 'vuepress-plugin-search-pro'
+import { autoCatalogPlugin } from 'vuepress-plugin-auto-catalog'
 import theme from './themeConfig'
 export default defineUserConfig({
   base: '/git-tutor/',
@@ -41,6 +42,7 @@ export default defineUserConfig({
 
   theme,
   plugins: [
+      autoCatalogPlugin(),
     searchProPlugin({
       indexContent: true,
     }),
